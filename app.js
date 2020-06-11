@@ -1,6 +1,9 @@
 // Instantiate/Initialise Github class
 const github = new Github;
 
+// Instantiate/Initialise UI class
+const ui = new UI;
+
 // Search input
 const searchUser = document.querySelector('#searchUser');
 
@@ -13,9 +16,19 @@ if(userText !== ''){
     // Make http call, pass in userText from the form
     github.getUser(userText)
     .then(data => {
-        console.log(data);
+        // each profile has a property of message
+       if(data.profile.message === 'Not Found'){
+        //Show alert
+
+       } else {
+        // Show profile
+        ui.showProfile(data.profile)
+       }
     })
     
+} else {
+    // Clear profile - when no text has been typed
+
 }
 
 });

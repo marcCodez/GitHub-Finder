@@ -14,7 +14,6 @@ class Github {
         const profile = await profileResponse.json();
 
         // return an object because returning the repos as well
-
         return {
             // In ES6 this is the same as profile: profile
             profile 

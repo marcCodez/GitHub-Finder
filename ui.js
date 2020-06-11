@@ -1,0 +1,42 @@
+class UI {
+    constructor() {
+        this.profile = document.querySelector('#profile');
+    }
+
+    showProfile(user){
+        // card card-body = borders, padding, drop shadows
+        // mb = margin bottom, use grid system 3 cols, img fluid=100% of container
+        // inside the user object theres a property of avatar_url corresponding to their dp
+        // badge is background color
+        this.profile.innerHTML =   `
+        <div class="card card-body mb-3">
+            <div class="row">
+                <div class="col-md-3">
+                    <img class="img-fluid mb-2" src="${user.avatar_url}">
+                    <a href="${user.html_url}" target="_bank" class="btn 
+                    btn-primary btn-block mb-4">View Profile</a>
+                </div>
+                <div class="col-md-9">
+                <span class="badge badge-primary">Public Repos: 
+                ${user.public_repos}</span>
+                <span class="badge badge-secondary">Public Gists: 
+                ${user.public_gists}</span>
+                <span class="badge badge-success">Followers: 
+                ${user.followers}</span>
+                <span class="badge badge-info">Following: 
+                ${user.following}</span>
+                <br><br>
+                <ul class="list-group">
+                    <li class="list-group-item">Company: ${user.company}</li>
+                    <li class="list-group-item">Blog: ${user.blog}</li>
+                    <li class="list-group-item">Location: ${user.location}</li>
+                    <li class="list-group-item">Since  : ${user.created_at}</li>
+                </ul>
+                </div>
+            </div>
+        </div>
+        <h3 class="page-heading mb-3">Latest Repos</h3>
+        <div id="repos"></div>
+        `;
+    }
+}
