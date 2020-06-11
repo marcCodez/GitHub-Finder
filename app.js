@@ -19,7 +19,7 @@ if(userText !== ''){
         // each profile has a property of message
        if(data.profile.message === 'Not Found'){
         //Show alert
-
+        ui.showAlert('User not found', 'alert alert-danger');
        } else {
         // Show profile
         ui.showProfile(data.profile)
@@ -28,7 +28,7 @@ if(userText !== ''){
     
 } else {
     // Clear profile - when no text has been typed
-
+    ui.clearProfile();
 }
 
 });

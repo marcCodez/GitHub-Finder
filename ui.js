@@ -3,6 +3,8 @@ class UI {
         this.profile = document.querySelector('#profile');
     }
 
+
+    // Display profile in UI
     showProfile(user){
         // card card-body = borders, padding, drop shadows
         // mb = margin bottom, use grid system 3 cols, img fluid=100% of container
@@ -16,27 +18,65 @@ class UI {
                     <a href="${user.html_url}" target="_bank" class="btn 
                     btn-primary btn-block mb-4">View Profile</a>
                 </div>
-                <div class="col-md-9">
-                <span class="badge badge-primary">Public Repos: 
-                ${user.public_repos}</span>
-                <span class="badge badge-secondary">Public Gists: 
-                ${user.public_gists}</span>
-                <span class="badge badge-success">Followers: 
-                ${user.followers}</span>
-                <span class="badge badge-info">Following: 
-                ${user.following}</span>
-                <br><br>
-                <ul class="list-group">
-                    <li class="list-group-item">Company: ${user.company}</li>
-                    <li class="list-group-item">Blog: ${user.blog}</li>
-                    <li class="list-group-item">Location: ${user.location}</li>
-                    <li class="list-group-item">Since  : ${user.created_at}</li>
-                </ul>
-                </div>
+                    <div class="col-md-9">
+                        <span class="badge badge-primary">Public Repos: 
+                        ${user.public_repos}</span>
+                        <span class="badge badge-secondary">Public Gists: 
+                        ${user.public_gists}</span>
+                        <span class="badge badge-success">Followers: 
+                        ${user.followers}</span>
+                        <span class="badge badge-info">Following: 
+                        ${user.following}</span>
+                        <br><br>
+                        <ul class="list-group">
+                        <li class="list-group-item">Company: ${user.company}</li>
+                        <li class="list-group-item">Blog: ${user.blog}</li>
+                        <li class="list-group-item">Location: ${user.location}</li>
+                        <li class="list-group-item">Since  : ${user.created_at}</li>
+                        </ul>
+                    </div>
             </div>
         </div>
         <h3 class="page-heading mb-3">Latest Repos</h3>
         <div id="repos"></div>
         `;
+    }
+
+    // Show alert message
+    showAlert(message, className) {
+        // Clear any remaining alerts
+        this.clearAlert();
+        // Create div
+        const div = document.createElement('div');
+        // Add classes
+        div.className = className
+        // Add Text
+        div.appendChild(document.createTextNode(message));
+        // Get parent
+        const container = document.querySelector('.searchContainer');
+        // Get search box
+        const search = document.querySelector('.search');
+        // Insert alert - insert div before search container
+        container.insertBefore(div, search);
+
+        // Timeout after 3 sec
+        setTimeout(() => {
+            this.clearAlert();
+        }, 3000);
+    }
+
+    // Clear alert message
+    clearAlert(){
+        const currentAlert = document.querySelector('.alert');
+
+        if(currentAlert){
+            currentAlert.remove();
+        }
+
+    }
+
+    // Clear profile
+    clearProfile(){
+        this.profile.innerHTML = '';
     }
 }
