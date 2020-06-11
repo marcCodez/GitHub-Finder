@@ -22,7 +22,9 @@ if(userText !== ''){
         ui.showAlert('User not found', 'alert alert-danger');
        } else {
         // Show profile
-        ui.showProfile(data.profile)
+        // the repos and profile are part of the data object since we returned it in github.js
+        ui.showProfile(data.profile);
+        ui.showRepos(data.repos);
        }
     })
     
